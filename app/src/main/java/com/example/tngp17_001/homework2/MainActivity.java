@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
                             tvDisplay.setText("+");
                         } else {
                             if (!isAdding) isAdding = true;
-                            tvDisplay.setText("+" + sum);
+                            if(sum==0) tvDisplay.setText("+");
+                            else tvDisplay.setText("+" + sum);
                         }
                         break;
                     }
@@ -52,92 +53,33 @@ public class MainActivity extends AppCompatActivity {
                             tvDisplay.setText("-");
                         } else {
                             if (isAdding) isAdding = false;
-                            tvDisplay.setText("-" + sum);
+                            if (sum==0) tvDisplay.setText("-");
+                            else tvDisplay.setText("-" + sum);
                         }
                         break;
                     }
                     case (R.id.buttonOne): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 1;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 1 >= 0) sum -= 1;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,1);
                         break;
                     }
                     case (R.id.buttonThree): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 3;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 3 >= 0) sum -= 3;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,3);
                         break;
                     }
                     case (R.id.buttonFive): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 5;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 5 >= 0) sum -= 5;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,5);
                         break;
                     }
                     case (R.id.buttonSeven): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 7;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 7 >= 0) sum -= 7;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,7);
                         break;
                     }
                     case (R.id.buttonNine): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 9;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 9 >= 0) sum -= 9;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,9);
                         break;
                     }
                     case (R.id.buttonEleven): {
-                        if (!isReady) {
-                        } else {
-                            if (isAdding) {
-                                sum += 11;
-                                tvDisplay.setText("+" + sum);
-                            } else {
-                                if (sum - 11 >= 0) sum -= 11;
-                                else sum = 0;
-                                tvDisplay.setText("-" + sum);
-                            }
-                        }
+                        calculate(tvDisplay,11);
                         break;
                     }
                     case (R.id.buttonClear): {
@@ -162,5 +104,19 @@ public class MainActivity extends AppCompatActivity {
         buttonEleven.setOnClickListener(myOnClickListener);
         buttonClear.setOnClickListener(myOnClickListener);
 
+    }
+
+    public void calculate(TextView tvDisplay,int input) {
+        if (!isReady) {
+        } else {
+            if (isAdding) {
+                sum += input;
+                tvDisplay.setText("+" + sum);
+            } else {
+                if (sum - input >= 0) sum -= input;
+                else sum = 0;
+                tvDisplay.setText("-" + sum);
+            }
+        }
     }
 }
